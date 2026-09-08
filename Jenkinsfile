@@ -23,26 +23,26 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                bat 'docker build -t student-flask-app .'
+                bat '"C:\\Users\\STUDENT.LAB5-DESKTOP-8.000\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" build -t student-flask-app .'
             }
         }
 
         stage('Stop Old Container') {
             steps {
-                bat 'docker stop student-app || exit /b 0'
-                bat 'docker rm student-app || exit /b 0'
+                bat '"C:\\Users\\STUDENT.LAB5-DESKTOP-8.000\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" stop student-app || exit /b 0'
+                bat '"C:\\Users\\STUDENT.LAB5-DESKTOP-8.000\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" rm student-app || exit /b 0'
             }
         }
 
         stage('Deploy Application') {
             steps {
-                bat 'docker run -d -p 5000:5000 --name student-app student-flask-app'
+                bat '"C:\\Users\\STUDENT.LAB5-DESKTOP-8.000\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" run -d -p 5000:5000 --name student-app student-flask-app'
             }
         }
 
         stage('Verify Deployment') {
             steps {
-                bat 'docker ps'
+                bat '"C:\\Users\\STUDENT.LAB5-DESKTOP-8.000\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin\\docker.exe" ps'
             }
         }
     }
